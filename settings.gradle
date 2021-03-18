@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "UTSLab_MusicPlayer_StephenTjoang_28280"

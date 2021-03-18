@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">UTSLab_MusicPlayer_StephenTjoang_28280</string>
+    <!-- halaman utama -->
+    <string name="btnProfil_text"> Profil </string>
+    <string name="btnLogin_text"> Login </string>
+    <!-- halaman login -->
+    <string name="etUsername_hint"> Username </string>
+    <string name="etPassword_hint"> Password </string>
+    <string name="tvLoginError"> Username dan atau password tidak sesuai! </string>
+    <!-- halaman profil -->
+    <string name="tvDataProfil">
+        NIM  : 00000028280\n
+        Nama : Stephen Tjoang\n
+        Kelas: BL
+    </string>
+    <string name="tvDataSumber">
+        Sumber:\n
+        Materi Perkuliahan Teori dan Lab UMN\n
+        StackOverflow\n
+        Android Documentation
+    </string>
+</resources>
