@@ -13,10 +13,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MusicPlayerActivity extends AppCompatActivity {
+public class MusicPlayerActivity extends AppCompatActivity implements Serializable {
     MediaPlayer mediaPlayer;
     ModelLagu lagu;
     SeekBar seekBar;

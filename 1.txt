@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/39736339/runtime-permissions-failure-delivering-result-resultinfowho-androidrequestpe
+https://medium.com/@hack4mer/creating-a-basic-android-music-player-app-using-mediaplayer-e000b1025e6d

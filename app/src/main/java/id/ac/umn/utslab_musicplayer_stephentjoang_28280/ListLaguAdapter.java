@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ListLaguAdapter extends RecyclerView.Adapter<ListLaguAdapter.LaguViewHolder> {
+public class ListLaguAdapter extends RecyclerView.Adapter<ListLaguAdapter.LaguViewHolder> implements Serializable {
     private List laguDataSet;
     private LayoutInflater mInflater;
     Context mContext;
@@ -44,7 +46,7 @@ public class ListLaguAdapter extends RecyclerView.Adapter<ListLaguAdapter.LaguVi
             int itemPosition = getAdapterPosition();
 
             Intent intent = new Intent(nContext, MusicPlayerActivity.class);
-            intent.putExtra("audio", (Bundle) laguList.get(itemPosition));
+            intent.putExtra("audio", (Serializable) laguList.get(itemPosition));
             nContext.startActivity(intent);
         }
     }
@@ -62,7 +64,8 @@ public class ListLaguAdapter extends RecyclerView.Adapter<ListLaguAdapter.LaguVi
     @Override
     public void onBindViewHolder(@NonNull LaguViewHolder audioViewHolder, int i) {
         //audioViewHolder.mTextView.setText(laguDataSet.get(i).getaName());
-        audioViewHolder.mTextView.setText(laguDataSet.get(i).toString());
+        ModelLagu temp_name = (ModelLagu) laguDataSet.get(i);
+        audioViewHolder.mTextView.setText(temp_name.getLaguName());
     }
 
     @Override

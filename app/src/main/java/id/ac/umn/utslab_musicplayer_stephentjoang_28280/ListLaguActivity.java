@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -13,12 +16,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListLaguActivity extends AppCompatActivity {
+public class ListLaguActivity extends AppCompatActivity implements Serializable {
     RecyclerView listLaguView;
     ListLaguAdapter listLaguAdapter;
     Context context;
@@ -36,7 +43,44 @@ public class ListLaguActivity extends AppCompatActivity {
             }
         }
 
+        AlertDialog.Builder alertAwalBuilder = new AlertDialog.Builder(this);
+        alertAwalBuilder.setTitle("Selamat Datang");
+        alertAwalBuilder.setMessage("Stephen Tjoang\n00000028280");
+        alertAwalBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertAwal = alertAwalBuilder.create();
+        alertAwal.show();
+
+
         getSongs();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.option_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.menuProfil:
+                Intent intentProfil = new Intent(this, ProfilePage.class);
+                startActivity(intentProfil);
+                return true;
+            case R.id.menuLogOut:
+                Intent intentLogOut = new Intent(this, MainActivity.class);
+                startActivity(intentLogOut);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void getSongs() {
