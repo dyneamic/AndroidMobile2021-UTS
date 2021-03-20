@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTSLab_MusicPlayer_StephenTjoang_28280">
 
-        <activity android:name=".MusicPlayerActivity"></activity>
+        <activity android:name=".MusicPlayerActivity" android:theme="@style/NoActionBarTheme"/>
         <activity android:name=".ListLaguActivity" />
         <activity android:name=".ProfilePage" />
         <activity android:name=".LoginPage" android:theme="@style/NoActionBarTheme"/>

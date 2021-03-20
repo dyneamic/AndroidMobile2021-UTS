@@ -38,10 +38,13 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         positionLagu = (int) intent.getSerializableExtra("position");
 
         laguName = findViewById(R.id.laguName);
-        Button btnViewAllSongs = findViewById(R.id.btnViewAllSongs);
         Button btnPrev = findViewById(R.id.btnPrev);
         Button btnNext = findViewById(R.id.btnNext);
         btnPlay = findViewById(R.id.btnPlay);
+
+        btnPlay.setBackgroundTintList(null);
+        btnPrev.setBackgroundTintList(null);
+        btnNext.setBackgroundTintList(null);
 
         initNew(positionLagu);
         startPlay();
@@ -62,13 +65,6 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
                 if (positionLagu < 0) positionLagu = laguList.size() - 1;
                 initNew(positionLagu);
                 startPlay();
-                /*
-                Intent intent = new Intent(MusicPlayerActivity.this, MusicPlayerActivity.class);
-                intent.putExtra("audio", (Serializable) laguList.get(itemPosition));
-                intent.putExtra("fullList", (Serializable) laguList);
-                intent.putExtra("position", (Serializable) itemPosition);
-                startActivity(intent);
-                */
             }
         });
 
@@ -80,22 +76,6 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
                 if (positionLagu == laguList.size()) positionLagu = 0;
                 initNew(positionLagu);
                 startPlay();
-                /*
-                Intent intent = new Intent(MusicPlayerActivity.this, MusicPlayerActivity.class);
-                intent.putExtra("audio", (Serializable) laguList.get(itemPosition));
-                intent.putExtra("fullList", (Serializable) laguList);
-                intent.putExtra("position", (Serializable) itemPosition);
-                startActivity(intent);
-                */
-            }
-        });
-
-        btnViewAllSongs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopPlay();
-                startActivity(new Intent(getApplicationContext(), ListLaguActivity.class));
-                //finish();
             }
         });
     }
@@ -114,46 +94,13 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
     }
 
     public void startPlay() {
-        /*
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
-            btnPlay.setBackground(getDrawable(R.drawable.ic_play_button));
+            btnPlay.setBackground(getDrawable(R.drawable.play_button));
         }
         else if (mediaPlayer != null && !(mediaPlayer.isPlaying())) {
             mediaPlayer.start();
-            btnPlay.setBackground(getDrawable(R.drawable.ic_pause_button));
-            enableSeekBar();
-        }
-        else if (lagu != null) {
-            //Toast.makeText(getApplicationContext(),"Playing from device; "+ lagu.getLaguPath(),Toast.LENGTH_SHORT).show();
-            btnPlay.setBackground(getDrawable(R.drawable.ic_pause_button));
-            mediaPlayer = MediaPlayer.create(MusicPlayerActivity.this, Uri.parse(lagu.getLaguPath()));
-            mediaPlayer.start();
-            enableSeekBar();
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"Playing from app",Toast.LENGTH_SHORT).show();
-            try {
-                AssetFileDescriptor afd = getAssets().openFd("piano.wav");
-                btnPlay.setBackground(getDrawable(R.drawable.ic_pause_button));
-                mediaPlayer = new MediaPlayer();
-                mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                afd.close();
-                mediaPlayer.prepare();
-                mediaPlayer.start();
-                enableSeekBar();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        */
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-            btnPlay.setBackground(getDrawable(R.drawable.ic_play_button));
-        }
-        else if (mediaPlayer != null && !(mediaPlayer.isPlaying())) {
-            mediaPlayer.start();
-            btnPlay.setBackground(getDrawable(R.drawable.ic_pause_button));
+            btnPlay.setBackground(getDrawable(R.drawable.pause_button));
             enableSeekBar();
         }
         //enableSeekBar();

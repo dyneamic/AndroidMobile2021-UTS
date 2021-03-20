@@ -6,3 +6,4 @@ https://stackoverflow.com/questions/5265913/how-to-use-putextra-and-getextra-for
 https://evangelidis.medium.com/android-how-to-set-gradient-color-as-background-7812c4cf06ec
 https://stackoverflow.com/questions/9334618/rounded-button-in-android
 freepik
+http://www.androidcodefinder.com/blog/2018/06/05/login-screen-design-in-android-studio/
