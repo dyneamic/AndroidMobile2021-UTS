@@ -2,7 +2,7 @@
     <string name="app_name">UTSLab_MusicPlayer_StephenTjoang_28280</string>
     <!-- halaman utama -->
     <string name="btnProfil_text"> Profil </string>
-    <string name="btnLogin_text"> Login </string>
+    <string name="btnLogin_text"> Sign in </string>
     <!-- halaman login -->
     <string name="etUsername_hint"> Username </string>
     <string name="etPassword_hint"> Password </string>

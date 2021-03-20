@@ -2,40 +2,71 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/main_background_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal|center_vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvMusicPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:text="MUSIC PLAYER"
-        android:textSize="20dp"
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/logo"
+        android:layout_gravity="center"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ivAppName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ivAppName"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/app_name"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+        app:layout_constraintBottom_toTopOf="@+id/tvTagline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="digital music, redefined."
+        app:layout_constraintTop_toBottomOf="@+id/ivAppName"
         app:layout_constraintBottom_toTopOf="@+id/btnProfil"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/btnProfil"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/round_shaped_button_1"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnProfil_text"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMusicPlayer" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTagline" />
 
     <Button
         android:id="@+id/btnLogin"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_shaped_button_1"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
         android:text="@string/btnLogin_text"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnProfil" />

@@ -13,8 +13,8 @@
         <activity android:name=".MusicPlayerActivity"></activity>
         <activity android:name=".ListLaguActivity" />
         <activity android:name=".ProfilePage" />
-        <activity android:name=".LoginPage" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginPage" android:theme="@style/NoActionBarTheme"/>
+        <activity android:name=".MainActivity" android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -13,7 +13,7 @@ public class LoginPage extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private TextView tvLoginError;
-    private Button btnLogin;
+    private Button btnLogin, btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,11 @@ public class LoginPage extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnBack = findViewById(R.id.btnBack);
         tvLoginError = findViewById(R.id.tvLoginError);
+
+        btnLogin.setBackgroundTintList(null);
+        btnBack.setBackgroundTintList(null);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +37,8 @@ public class LoginPage extends AppCompatActivity {
 
                 if ((!valueUsername.equals("uasmobile")) || (!valuePassword.equals("uasmobilegenap"))) {
                     tvLoginError.setVisibility(View.VISIBLE);
+                    etUsername.setText("");
+                    etPassword.setText("");
                 }
                 else {
                     tvLoginError.setVisibility(View.GONE);
@@ -42,6 +48,13 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
