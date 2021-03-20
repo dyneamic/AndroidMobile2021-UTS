@@ -1,2 +1,5 @@
 https://stackoverflow.com/questions/39736339/runtime-permissions-failure-delivering-result-resultinfowho-androidrequestpe
 https://medium.com/@hack4mer/creating-a-basic-android-music-player-app-using-mediaplayer-e000b1025e6d
+https://www.twoh.co/2017/01/07/tutorial-cara-membuat-alert-dialog-sederhana-di-android/
+https://suragch.medium.com/adding-a-menu-to-the-toolbar-in-android-60d096f9fb89
+https://stackoverflow.com/questions/5265913/how-to-use-putextra-and-getextra-for-string-data

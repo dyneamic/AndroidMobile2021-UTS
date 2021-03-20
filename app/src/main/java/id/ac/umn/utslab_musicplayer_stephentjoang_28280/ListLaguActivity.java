@@ -43,18 +43,21 @@ public class ListLaguActivity extends AppCompatActivity implements Serializable 
             }
         }
 
-        AlertDialog.Builder alertAwalBuilder = new AlertDialog.Builder(this);
-        alertAwalBuilder.setTitle("Selamat Datang");
-        alertAwalBuilder.setMessage("Stephen Tjoang\n00000028280");
-        alertAwalBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        Bundle extras = getIntent().getExtras();
+        if (extras == null){
+            AlertDialog.Builder alertAwalBuilder = new AlertDialog.Builder(this);
+            alertAwalBuilder.setTitle("Selamat Datang");
+            alertAwalBuilder.setMessage("Stephen Tjoang\n00000028280");
+            alertAwalBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
+                }
+            });
 
-        AlertDialog alertAwal = alertAwalBuilder.create();
-        alertAwal.show();
+            AlertDialog alertAwal = alertAwalBuilder.create();
+            alertAwal.show();
+        }
 
 
         getSongs();
@@ -97,7 +100,7 @@ public class ListLaguActivity extends AppCompatActivity implements Serializable 
     public List getLaguFromDevice (final Context context) {
         final List tempListSemuaLagu = new ArrayList<>();
 
-        Uri uri = MediaStore.Audio.Media.INTERNAL_CONTENT_URI;
+        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String[] dataLagu = { MediaStore.Audio.AudioColumns.DATA,
                               MediaStore.Audio.AudioColumns.ALBUM,
                               MediaStore.Audio.ArtistColumns.ARTIST};
@@ -123,7 +126,6 @@ public class ListLaguActivity extends AppCompatActivity implements Serializable 
             }
             cursor.close();
         }
-        Log.w("HIHIHI", tempListSemuaLagu.toString());
         return tempListSemuaLagu;
     }
 
@@ -140,5 +142,21 @@ public class ListLaguActivity extends AppCompatActivity implements Serializable 
                 }
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder.setTitle("Informasi");
+        alertBuilder.setMessage("Untuk keluar, silakan Log Out");
+        alertBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertAwal = alertBuilder.create();
+        alertAwal.show();
     }
 }

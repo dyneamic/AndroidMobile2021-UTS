@@ -63,14 +63,12 @@ public class ListLaguAdapter extends RecyclerView.Adapter<ListLaguAdapter.LaguVi
 
     @Override
     public void onBindViewHolder(@NonNull LaguViewHolder audioViewHolder, int i) {
-        //audioViewHolder.mTextView.setText(laguDataSet.get(i).getaName());
         ModelLagu temp_name = (ModelLagu) laguDataSet.get(i);
         audioViewHolder.mTextView.setText(temp_name.getLaguName());
     }
 
     @Override
     public int getItemCount() {
-        Log.w("NULL", "SIZE DARI DATASET:" + String.valueOf(laguDataSet.size()));
         return laguDataSet.size();
     }
 
