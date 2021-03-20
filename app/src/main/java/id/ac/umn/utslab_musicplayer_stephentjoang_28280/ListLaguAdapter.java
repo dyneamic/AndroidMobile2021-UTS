@@ -47,6 +47,8 @@ public class ListLaguAdapter extends RecyclerView.Adapter<ListLaguAdapter.LaguVi
 
             Intent intent = new Intent(nContext, MusicPlayerActivity.class);
             intent.putExtra("audio", (Serializable) laguList.get(itemPosition));
+            intent.putExtra("fullList", (Serializable) laguList);
+            intent.putExtra("position", (Serializable) itemPosition);
             nContext.startActivity(intent);
         }
     }

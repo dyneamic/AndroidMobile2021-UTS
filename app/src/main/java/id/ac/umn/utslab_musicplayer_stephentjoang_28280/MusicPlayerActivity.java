@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,6 +23,8 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
     ModelLagu lagu;
     SeekBar seekBar;
     Button btnPlay;
+    int positionLagu;
+    List laguList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,8 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
 
         Intent intent = getIntent();
         lagu = (ModelLagu) intent.getSerializableExtra("audio");
+        laguList = (List) intent.getSerializableExtra("fullList");
+        positionLagu = (int) intent.getSerializableExtra("position");
 
         TextView laguName = findViewById(R.id.laguName);
         Button btnViewAllSongs = findViewById(R.id.btnViewAllSongs);
@@ -54,14 +59,30 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlay();
+                int itemPosition = positionLagu - 1;
+                if (itemPosition < 0) itemPosition = laguList.size() - 1;
 
+                Intent intent = new Intent(MusicPlayerActivity.this, MusicPlayerActivity.class);
+                intent.putExtra("audio", (Serializable) laguList.get(itemPosition));
+                intent.putExtra("fullList", (Serializable) laguList);
+                intent.putExtra("position", (Serializable) itemPosition);
+                startActivity(intent);
             }
         });
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlay();
+                int itemPosition = positionLagu + 1;
+                if (itemPosition > (laguList.size() - 1)) itemPosition = 0;
 
+                Intent intent = new Intent(MusicPlayerActivity.this, MusicPlayerActivity.class);
+                intent.putExtra("audio", (Serializable) laguList.get(itemPosition));
+                intent.putExtra("fullList", (Serializable) laguList);
+                intent.putExtra("position", (Serializable) itemPosition);
+                startActivity(intent);
             }
         });
 
