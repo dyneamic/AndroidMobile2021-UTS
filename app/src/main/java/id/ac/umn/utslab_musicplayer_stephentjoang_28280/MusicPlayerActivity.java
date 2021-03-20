@@ -25,6 +25,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
     Button btnPlay;
     int positionLagu;
     List laguList;
+    TextView laguName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +33,19 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         setContentView(R.layout.activity_music_player);
 
         Intent intent = getIntent();
-        lagu = (ModelLagu) intent.getSerializableExtra("audio");
+        //lagu = (ModelLagu) intent.getSerializableExtra("audio");
         laguList = (List) intent.getSerializableExtra("fullList");
         positionLagu = (int) intent.getSerializableExtra("position");
 
-        TextView laguName = findViewById(R.id.laguName);
+        laguName = findViewById(R.id.laguName);
         Button btnViewAllSongs = findViewById(R.id.btnViewAllSongs);
         Button btnPrev = findViewById(R.id.btnPrev);
         Button btnNext = findViewById(R.id.btnNext);
         btnPlay = findViewById(R.id.btnPlay);
 
-        if (lagu != null) {
-            laguName.setText(lagu.getLaguName());
-        }
-        else {
-            laguName.setText("Sample Lagu");
-        }
+        initNew(positionLagu);
+        startPlay();
+        enableSeekBar();
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,14 +58,17 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
             @Override
             public void onClick(View v) {
                 stopPlay();
-                int itemPosition = positionLagu - 1;
-                if (itemPosition < 0) itemPosition = laguList.size() - 1;
-
+                positionLagu--;
+                if (positionLagu < 0) positionLagu = laguList.size() - 1;
+                initNew(positionLagu);
+                startPlay();
+                /*
                 Intent intent = new Intent(MusicPlayerActivity.this, MusicPlayerActivity.class);
                 intent.putExtra("audio", (Serializable) laguList.get(itemPosition));
                 intent.putExtra("fullList", (Serializable) laguList);
                 intent.putExtra("position", (Serializable) itemPosition);
                 startActivity(intent);
+                */
             }
         });
 
@@ -75,14 +76,17 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
             @Override
             public void onClick(View v) {
                 stopPlay();
-                int itemPosition = positionLagu + 1;
-                if (itemPosition > (laguList.size() - 1)) itemPosition = 0;
-
+                positionLagu++;
+                if (positionLagu == laguList.size()) positionLagu = 0;
+                initNew(positionLagu);
+                startPlay();
+                /*
                 Intent intent = new Intent(MusicPlayerActivity.this, MusicPlayerActivity.class);
                 intent.putExtra("audio", (Serializable) laguList.get(itemPosition));
                 intent.putExtra("fullList", (Serializable) laguList);
                 intent.putExtra("position", (Serializable) itemPosition);
                 startActivity(intent);
+                */
             }
         });
 
@@ -96,7 +100,21 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         });
     }
 
+    public void initNew(int positionLagu) {
+        lagu = (ModelLagu) laguList.get(positionLagu);
+        //nama lagu
+        if (lagu != null) {
+            laguName.setText(lagu.getLaguName());
+        }
+        else {
+            laguName.setText("Filename not found.");
+        }
+        mediaPlayer = MediaPlayer.create(MusicPlayerActivity.this, Uri.parse(lagu.getLaguPath()));
+        enableSeekBar();
+    }
+
     public void startPlay() {
+        /*
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
             btnPlay.setBackground(getDrawable(R.drawable.ic_play_button));
@@ -104,9 +122,10 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         else if (mediaPlayer != null && !(mediaPlayer.isPlaying())) {
             mediaPlayer.start();
             btnPlay.setBackground(getDrawable(R.drawable.ic_pause_button));
+            enableSeekBar();
         }
         else if (lagu != null) {
-            Toast.makeText(getApplicationContext(),"Playing from device; "+ lagu.getLaguPath(),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(),"Playing from device; "+ lagu.getLaguPath(),Toast.LENGTH_SHORT).show();
             btnPlay.setBackground(getDrawable(R.drawable.ic_pause_button));
             mediaPlayer = MediaPlayer.create(MusicPlayerActivity.this, Uri.parse(lagu.getLaguPath()));
             mediaPlayer.start();
@@ -127,7 +146,16 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
                 e.printStackTrace();
             }
         }
-
+        */
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+            btnPlay.setBackground(getDrawable(R.drawable.ic_play_button));
+        }
+        else if (mediaPlayer != null && !(mediaPlayer.isPlaying())) {
+            mediaPlayer.start();
+            btnPlay.setBackground(getDrawable(R.drawable.ic_pause_button));
+            enableSeekBar();
+        }
         //enableSeekBar();
     }
 
