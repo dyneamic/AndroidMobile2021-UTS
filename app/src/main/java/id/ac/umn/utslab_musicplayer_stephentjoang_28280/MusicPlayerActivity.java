@@ -38,6 +38,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         positionLagu = (int) intent.getSerializableExtra("position");
 
         laguName = findViewById(R.id.laguName);
+        Button btnBack = findViewById(R.id.btnBack);
         Button btnPrev = findViewById(R.id.btnPrev);
         Button btnNext = findViewById(R.id.btnNext);
         btnPlay = findViewById(R.id.btnPlay);
@@ -45,6 +46,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         btnPlay.setBackgroundTintList(null);
         btnPrev.setBackgroundTintList(null);
         btnNext.setBackgroundTintList(null);
+        btnBack.setBackgroundTintList(null);
 
         initNew(positionLagu);
         startPlay();

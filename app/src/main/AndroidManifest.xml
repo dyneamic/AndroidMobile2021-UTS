@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.ac.umn.utslab_musicplayer_stephentjoang_28280">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UTSLab_MusicPlayer_StephenTjoang_28280">
-
-        <activity android:name=".MusicPlayerActivity" android:theme="@style/NoActionBarTheme"/>
+        <activity android:name=".LinkSumberActivity"></activity>
+        <activity android:name=".MusicPlayerActivity" />
         <activity android:name=".ListLaguActivity" />
         <activity android:name=".ProfilePage" />
-        <activity android:name=".LoginPage" android:theme="@style/NoActionBarTheme"/>
-        <activity android:name=".MainActivity" android:theme="@style/NoActionBarTheme">
+        <activity android:name=".LoginPage" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

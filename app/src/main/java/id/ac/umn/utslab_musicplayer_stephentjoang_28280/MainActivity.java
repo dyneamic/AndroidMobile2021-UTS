@@ -1,12 +1,10 @@
 package id.ac.umn.utslab_musicplayer_stephentjoang_28280;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
         alertBuilder.setTitle("Informasi");
-        alertBuilder.setMessage("Untuk keluar, silakan pilih Home Button");
-        alertBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
+        alertBuilder.setMessage("Tekan home button untuk kembali ke menu utama.");
+        alertBuilder.setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
 
         AlertDialog alertAwal = alertBuilder.create();
         alertAwal.show();

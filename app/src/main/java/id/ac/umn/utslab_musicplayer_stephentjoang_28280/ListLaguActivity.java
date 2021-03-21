@@ -19,6 +19,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -59,6 +62,35 @@ public class ListLaguActivity extends AppCompatActivity implements Serializable 
             alertAwal.show();
         }
 
+        Button btnThreeDots = findViewById(R.id.btnThreeDots);
+        btnThreeDots.setBackgroundTintList(null);
+
+        btnThreeDots.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(ListLaguActivity.this, btnThreeDots);
+                MenuInflater menuInflater = getMenuInflater();
+                menuInflater.inflate(R.menu.option_menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.menuProfil:
+                                Intent intentProfil = new Intent(ListLaguActivity.this, ProfilePage.class);
+                                startActivity(intentProfil);
+                                return true;
+                            case R.id.menuLogOut:
+                                Intent intentLogOut = new Intent(ListLaguActivity.this, MainActivity.class);
+                                startActivity(intentLogOut);
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                popup.show();
+            }
+        });
 
         getSongs();
     }
@@ -100,7 +132,7 @@ public class ListLaguActivity extends AppCompatActivity implements Serializable 
     public List getLaguFromDevice (final Context context) {
         final List tempListSemuaLagu = new ArrayList<>();
 
-        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        Uri uri = MediaStore.Audio.Media.INTERNAL_CONTENT_URI;
         String[] dataLagu = { MediaStore.Audio.AudioColumns.DATA,
                               MediaStore.Audio.AudioColumns.ALBUM,
                               MediaStore.Audio.ArtistColumns.ARTIST};

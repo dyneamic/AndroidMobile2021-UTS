@@ -9,14 +9,25 @@
     <string name="tvLoginError"> Username dan atau password tidak sesuai! </string>
     <!-- halaman profil -->
     <string name="tvDataProfil">
-        NIM  : 00000028280\n
-        Nama : Stephen Tjoang\n
-        Kelas: BL
+        NIM  : 00000028280\nNama : Stephen Tjoang\nKelas: BL
     </string>
     <string name="tvDataSumber">
-        Sumber:\n
+        <b>Sumber</b>\n
         Materi Perkuliahan Teori dan Lab UMN\n
         StackOverflow\n
-        Android Documentation
+        Android Documentation\n
+        Freepik Vectors\n
+        Behance\n\n
+    </string>
+    <string name="linkSumber">
+        https://stackoverflow.com/questions/39736339/runtime-permissions-failure-delivering-result-resultinfowho-androidrequestpe\n\n
+        https://medium.com/@hack4mer/creating-a-basic-android-music-player-app-using-mediaplayer-e000b1025e6d\n\n
+        https://www.twoh.co/2017/01/07/tutorial-cara-membuat-alert-dialog-sederhana-di-android\n\n
+        https://suragch.medium.com/adding-a-menu-to-the-toolbar-in-android-60d096f9fb89\n\n
+        https://stackoverflow.com/questions/5265913/how-to-use-putextra-and-getextra-for-string-data\n\n
+        https://evangelidis.medium.com/android-how-to-set-gradient-color-as-background-7812c4cf06ec\n\n
+        https://stackoverflow.com/questions/9334618/rounded-button-in-android\n\n
+        http://www.androidcodefinder.com/blog/2018/06/05/login-screen-design-in-android-studio\n\n
+        https://stackoverflow.com/questions/42635677/android-studio-popupmenu-onmenuitemclicklistener-issue
     </string>
 </resources>
