@@ -20,17 +20,17 @@
         Behance\n\n
     </string>
     <string name="linkSumber">
-        https://stackoverflow.com/questions/39736339/runtime-permissions-failure-delivering-result-resultinfowho-androidrequestpe\n
-        https://medium.com/@hack4mer/creating-a-basic-android-music-player-app-using-mediaplayer-e000b1025e6d\n
-        https://www.twoh.co/2017/01/07/tutorial-cara-membuat-alert-dialog-sederhana-di-android\n
-        https://suragch.medium.com/adding-a-menu-to-the-toolbar-in-android-60d096f9fb89\n
-        https://stackoverflow.com/questions/5265913/how-to-use-putextra-and-getextra-for-string-data\n
-        https://evangelidis.medium.com/android-how-to-set-gradient-color-as-background-7812c4cf06ec\n
-        https://stackoverflow.com/questions/9334618/rounded-button-in-android\n
-        http://www.androidcodefinder.com/blog/2018/06/05/login-screen-design-in-android-studio\n
-        https://stackoverflow.com/questions/42635677/android-studio-popupmenu-onmenuitemclicklistener-issue\n
-        https://stackoverflow.com/questions/5161951/android-only-the-original-thread-that-created-a-view-hierarchy-can-touch-its-vi\n
-        https://stackoverflow.com/questions/44040828/get-album-cover-image\n
+        https://stackoverflow.com/questions/39736339/runtime-permissions-failure-delivering-result-resultinfowho-androidrequestpe\n\n
+        https://medium.com/@hack4mer/creating-a-basic-android-music-player-app-using-mediaplayer-e000b1025e6d\n\n
+        https://www.twoh.co/2017/01/07/tutorial-cara-membuat-alert-dialog-sederhana-di-android\n\n
+        https://suragch.medium.com/adding-a-menu-to-the-toolbar-in-android-60d096f9fb89\n\n
+        https://stackoverflow.com/questions/5265913/how-to-use-putextra-and-getextra-for-string-data\n\n
+        https://evangelidis.medium.com/android-how-to-set-gradient-color-as-background-7812c4cf06ec\n\n
+        https://stackoverflow.com/questions/9334618/rounded-button-in-android\n\n
+        http://www.androidcodefinder.com/blog/2018/06/05/login-screen-design-in-android-studio\n\n
+        https://stackoverflow.com/questions/42635677/android-studio-popupmenu-onmenuitemclicklistener-issue\n\n
+        https://stackoverflow.com/questions/5161951/android-only-the-original-thread-that-created-a-view-hierarchy-can-touch-its-vi\n\n
+        https://stackoverflow.com/questions/44040828/get-album-cover-image\n\n
         https://stackoverflow.com/questions/17176518/set-background-of-layout-from-uri
     </string>
 </resources>
