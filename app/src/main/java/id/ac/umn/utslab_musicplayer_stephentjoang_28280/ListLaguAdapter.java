@@ -66,7 +66,13 @@ public class ListLaguAdapter extends RecyclerView.Adapter<ListLaguAdapter.LaguVi
     @Override
     public void onBindViewHolder(@NonNull LaguViewHolder audioViewHolder, int i) {
         ModelLagu temp_name = (ModelLagu) laguDataSet.get(i);
-        audioViewHolder.mTextView.setText(temp_name.getLaguArtist() + "\n" + temp_name.getLaguName());
+
+        String artist_name = "", title_name = "";
+        if (temp_name.getLaguArtist().equals("<unknown>")) artist_name = "Unknown Artist";
+        else artist_name = temp_name.getLaguArtist();
+
+        String final_display = temp_name.getLaguName() + "\n" + artist_name;
+        audioViewHolder.mTextView.setText(final_display);
     }
 
     @Override

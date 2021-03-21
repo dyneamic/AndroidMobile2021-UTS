@@ -132,10 +132,11 @@ public class ListLaguActivity extends AppCompatActivity implements Serializable 
     public List getLaguFromDevice (final Context context) {
         final List tempListSemuaLagu = new ArrayList<>();
 
-        Uri uri = MediaStore.Audio.Media.INTERNAL_CONTENT_URI;
+        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String[] dataLagu = { MediaStore.Audio.AudioColumns.DATA,
                               MediaStore.Audio.AudioColumns.ALBUM,
-                              MediaStore.Audio.ArtistColumns.ARTIST};
+                              MediaStore.Audio.ArtistColumns.ARTIST,
+                              MediaStore.Audio.AudioColumns.TITLE};
 
         Cursor cursor = context.getContentResolver().query(uri, dataLagu, null, null, null);
 
@@ -147,7 +148,8 @@ public class ListLaguActivity extends AppCompatActivity implements Serializable 
                 String album = cursor.getString(1);
                 String artist = cursor.getString(2);
 
-                String name = path.substring(path.lastIndexOf("/") + 1);
+                //String name = path.substring(path.lastIndexOf("/") + 1);
+                String name = cursor.getString(3);
 
                 modelLagu.setLaguPath(path);
                 modelLagu.setLaguAlbum(album);

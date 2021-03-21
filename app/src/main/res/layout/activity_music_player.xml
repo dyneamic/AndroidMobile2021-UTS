@@ -19,10 +19,11 @@
 
     <TextView
         android:id="@+id/tvTagline"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:text="Now Playing"
+        android:textSize="19dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +31,7 @@
     <ImageView
         android:id="@+id/albumImage"
         android:background="@drawable/cd_icon"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_width="165dp"
         android:layout_height="165dp"
         app:layout_constraintTop_toBottomOf="@+id/btnBack"
@@ -45,8 +46,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="TextView"
+        android:text="Contoh Judul Lagu"
+        android:gravity="center"
+        android:color="@color/greyText"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed-medium"
         app:layout_constraintTop_toBottomOf="@+id/albumImage"
+        app:layout_constraintBottom_toTopOf="@+id/laguArtist"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/laguArtist"
+        android:layout_marginTop="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Contoh Artis Lagu"
+        android:color="@color/greyText"
+        android:textSize="15sp"
+        android:fontFamily="sans-serif-condensed-light"
+        app:layout_constraintTop_toBottomOf="@+id/laguName"
         app:layout_constraintBottom_toTopOf="@+id/btnPlay"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -54,38 +76,38 @@
     <Button
         android:id="@+id/btnPrev"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_centerInParent="true"
         android:background="@drawable/ic_previous_button"
-        app:layout_constraintTop_toBottomOf="@+id/laguName"
+        app:layout_constraintTop_toBottomOf="@+id/laguArtist"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnPlay"/>
 
     <Button
         android:id="@+id/btnPlay"
         android:layout_marginTop="30dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_centerInParent="true"
         android:background="@drawable/play_button"
-        app:layout_constraintTop_toBottomOf="@+id/laguName"
+        app:layout_constraintTop_toBottomOf="@+id/laguArtist"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintLeft_toRightOf="@+id/btnPrev"
-        app:layout_constraintRight_toLeftOf="@+id/btnNext"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
         android:id="@+id/btnNext"
         android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_centerInParent="true"
         android:background="@drawable/ic_next_button"
-        app:layout_constraintTop_toBottomOf="@+id/laguName"
+        app:layout_constraintTop_toBottomOf="@+id/laguArtist"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintLeft_toRightOf="@+id/btnPlay"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintLeft_toRightOf="@+id/btnPlay"/>
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -97,26 +119,24 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPlay"
-        app:layout_constraintBottom_toTopOf="@+id/runningTime"/>
+        app:layout_constraintBottom_toTopOf="@+id/tvRunningTime"/>
 
     <TextView
-        android:id="@+id/runningTime"
+        android:id="@+id/tvRunningTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:layout_marginStart="20dp"
         android:text="TextView"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/totalTime"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"/>
 
     <TextView
-        android:id="@+id/totalTime"
+        android:id="@+id/tvTotalTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:gravity="right"
+        android:layout_marginEnd="20dp"
+        android:text="Duration"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
-        app:layout_constraintLeft_toRightOf="@+id/runningTime"
         app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
