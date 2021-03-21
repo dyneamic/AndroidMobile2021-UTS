@@ -39,4 +39,10 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ProfilePage.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

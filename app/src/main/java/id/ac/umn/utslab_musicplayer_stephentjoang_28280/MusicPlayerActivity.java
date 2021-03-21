@@ -106,8 +106,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
             }
         });
     }
-    
-    //tambahan
+
     public static Uri getArtUriFromMusicFile(Context context, ModelLagu lagu) {
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String[] cursor_cols = { MediaStore.Audio.Media.ALBUM_ID };
@@ -140,8 +139,6 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
             return cursor.getString(idx);
         }
     }
-
-    //end of tambahan
     
     public void initNew(int positionLagu) {
         lagu = (ModelLagu) laguList.get(positionLagu);
@@ -176,6 +173,8 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
             ivAlbumImage.setBackground(drawable_img);
         }
         catch(Exception e) {
+            Drawable drawable_def = AppCompatResources.getDrawable(mContext, R.drawable.cd_icon);
+            ivAlbumImage.setBackground(drawable_def);
         }
         enableSeekBar();
     }

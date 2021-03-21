@@ -29,4 +29,11 @@ public class LinkSumberActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LinkSumberActivity.this, ProfilePage.class);
+        startActivity(intent);
+    }
+
 }
