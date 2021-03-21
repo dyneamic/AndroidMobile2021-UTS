@@ -9,10 +9,10 @@
     <string name="tvLoginError"> Username dan atau password tidak sesuai! </string>
     <!-- halaman profil -->
     <string name="tvDataProfil">
-        NIM  : 00000028280\nNama : Stephen Tjoang\nKelas: BL
+        <b>NIM</b>    : 00000028280\n<b> Nama</b> : Stephen Tjoang\n<b> Kelas</b> : BL
     </string>
     <string name="tvDataSumber">
-        <b>Sumber</b>\n
+        <b>Sumber</b>\n\n
         Materi Perkuliahan Teori dan Lab UMN\n
         StackOverflow\n
         Android Documentation\n
@@ -28,6 +28,7 @@
         https://evangelidis.medium.com/android-how-to-set-gradient-color-as-background-7812c4cf06ec\n\n
         https://stackoverflow.com/questions/9334618/rounded-button-in-android\n\n
         http://www.androidcodefinder.com/blog/2018/06/05/login-screen-design-in-android-studio\n\n
-        https://stackoverflow.com/questions/42635677/android-studio-popupmenu-onmenuitemclicklistener-issue
+        https://stackoverflow.com/questions/42635677/android-studio-popupmenu-onmenuitemclicklistener-issue\n\n
+        https://stackoverflow.com/questions/5161951/android-only-the-original-thread-that-created-a-view-hierarchy-can-touch-its-vi
     </string>
 </resources>

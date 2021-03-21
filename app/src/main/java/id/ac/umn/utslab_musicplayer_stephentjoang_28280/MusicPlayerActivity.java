@@ -1,18 +1,26 @@
 package id.ac.umn.utslab_musicplayer_stephentjoang_28280;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
+import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Timer;
@@ -24,9 +32,11 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
     ModelLagu lagu;
     SeekBar seekBar;
     Button btnPlay;
+    ImageView ivAlbumImage;
     int positionLagu;
     List laguList;
     TextView laguName, laguArtist, tvTotalTime, tvRunningTime;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         laguArtist = findViewById(R.id.laguArtist);
         tvTotalTime = findViewById(R.id.tvTotalTime);
         tvRunningTime = findViewById(R.id.tvRunningTime);
+        ivAlbumImage = findViewById(R.id.albumImage);
         Button btnBack = findViewById(R.id.btnBack);
         Button btnPrev = findViewById(R.id.btnPrev);
         Button btnNext = findViewById(R.id.btnNext);
@@ -61,6 +72,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
             public void onClick(View v) {
                 stopPlay();
                 Intent intent = new Intent(MusicPlayerActivity.this, ListLaguActivity.class);
+                intent.putExtra("popup", 0);
                 startActivity(intent);
             }
         });
@@ -94,7 +106,43 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
             }
         });
     }
+    
+    //tambahan
+    public static Uri getArtUriFromMusicFile(Context context, ModelLagu lagu) {
+        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        String[] cursor_cols = { MediaStore.Audio.Media.ALBUM_ID };
 
+        String condition = MediaStore.Audio.Media.IS_MUSIC + "=1 AND " + MediaStore.Audio.Media.DATA + " = '"
+                + lagu.getLaguPath() + "'";
+        Cursor cursor = context.getApplicationContext().getContentResolver().query(uri, cursor_cols, condition, null, null);
+        /*
+         * If the cusor count is greater than 0 then parse the data and get the art id.
+         */
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            Long albumId = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID));
+
+            Uri sArtworkUri = Uri.parse("content://media/external/audio/albumart");
+            Uri albumArtUri = ContentUris.withAppendedId(sArtworkUri, albumId);
+            cursor.close();
+            return albumArtUri;
+        }
+        return Uri.EMPTY;
+    }
+
+    private String getRealPathFromURI(Uri contentURI) {
+        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            return contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            return cursor.getString(idx);
+        }
+    }
+
+    //end of tambahan
+    
     public void initNew(int positionLagu) {
         lagu = (ModelLagu) laguList.get(positionLagu);
         //nama lagu
@@ -119,6 +167,16 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
         String time_str = (durasi_lagu / 60) + " : " + durasi_lagu_detik_str;
         tvTotalTime.setText(time_str);
 
+        //album
+        try {
+            mContext = getApplicationContext();
+            Uri album_image_uri = getArtUriFromMusicFile(mContext, lagu);
+            File album_image_file = new File(getRealPathFromURI(album_image_uri));
+            Drawable drawable_img = Drawable.createFromPath(album_image_file.getAbsolutePath());
+            ivAlbumImage.setBackground(drawable_img);
+        }
+        catch(Exception e) {
+        }
         enableSeekBar();
     }
 
@@ -143,12 +201,23 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
     public void enableSeekBar() {
         seekBar =  findViewById(R.id.seekBar);
         seekBar.setMax(mediaPlayer.getDuration());
+        int temp = 0;
 
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 if(mediaPlayer!=null && mediaPlayer.isPlaying()){
                     seekBar.setProgress(mediaPlayer.getCurrentPosition());
+
+                    if (mediaPlayer.getCurrentPosition() > (mediaPlayer.getDuration() - 30)) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                btnPlay.setBackground(getDrawable(R.drawable.play_button));
+                            }
+                        });
+                    }
+
                     int curr_pos_lagu = mediaPlayer.getCurrentPosition();
                     curr_pos_lagu /= 1000;
                     int curr_pos_detik = curr_pos_lagu % 60;
@@ -159,7 +228,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Serializab
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                                tvRunningTime.setText(curr_detik_str);
+                            tvRunningTime.setText(curr_detik_str);
                         }
                     });
                 }
